@@ -6,8 +6,8 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Code New Roman:size=13" };
-static const char dmenufont[]       = "Code New Roman:size=13";
+static const char *fonts[]          = { "Liberation Mono:size=13" };
+static const char dmenufont[]       = "Liberation Mono:size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -65,12 +65,14 @@ static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *upvol[]      = { "wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "4%+",      NULL };
 static const char *downvol[]    = { "wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "4%-",      NULL };
 static const char *mutevol[]    = { "wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
+static const char *rofi[] 	= { "rofi", "-modi", "drun", "-show", "drun", NULL };
+
 
 #include "X11/XF86keysym.h"
 #include "shiftview.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },	// alternatively use dmenu
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = flameshot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
