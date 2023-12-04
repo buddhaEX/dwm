@@ -1,13 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Liberation Mono:size=13" };
-static const char dmenufont[]       = "Liberation Mono:size=13";
+static const char *fonts[]          = { "JetBrainsMono:size=12" };
+static const char dmenufont[]       = "JetBrainsMono:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "misc", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -29,8 +29,9 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "mpv",      NULL,       NULL,       0,            1,           -1 },
-	{ "sxiv",     NULL,       NULL,       0,            1,           -1 },
-	{ "KeePassXC",     NULL,       NULL,       1 << 8,            0,           -1 },
+	{ "Sxiv",     NULL,       NULL,       0,            1,           -1 },
+	{ "steam",     NULL,       NULL,       0,            1,           -1 },
+	{ "KeePassXC",     NULL,       NULL,       1 << 4,            0,           -1 },
 };
 
 /* layout(s) */
@@ -65,14 +66,14 @@ static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *upvol[]      = { "wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "4%+",      NULL };
 static const char *downvol[]    = { "wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "4%-",      NULL };
 static const char *mutevol[]    = { "wpctl",   "set-mute",   "@DEFAULT_AUDIO_SINK@",      "toggle",   NULL };
-static const char *rofi[] 	= { "rofi", "-modi", "drun", "-show", "drun", NULL };
+// static const char *rofi[] 	= { "rofi", "-modi", "drun", "-show", "drun", NULL };
 
 
 #include "X11/XF86keysym.h"
 #include "shiftview.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },	// alternatively use dmenu
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = flameshot } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
